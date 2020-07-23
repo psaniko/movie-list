@@ -9,6 +9,8 @@ app = Flask(__name__)
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})  # demo purposes only
 
 
+# if fast response times are crucial, a separate cron-like process could perform the time-intensive
+# API requests and store them in a database for fast retrieval later
 @app.route('/movies')
 @cache.cached(timeout=60)
 def list_movies():
